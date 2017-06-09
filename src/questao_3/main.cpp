@@ -44,9 +44,28 @@ int operar(stack<int> &pilha, char operacao) {
 	return 0;
 }
 
+bool isInt(char string) {
+	if (string >= char(48) && string <= char(57)) return true;
+	return false;
+}
+
+int getStringSize(char *string) {
+	int i = 0;
+	while(string[i] != '\0') {
+		i++;
+	}
+	return i;
+}
+
 int empilhar(stack<int> &pilha, char **args, int n) {
-	int valor;
+	int valor, size;
 	for (int i = 1; i < n; i++) {
+		if (isInt(args[i][0])) {
+			size = getStringSize(args[i]);
+			for (int j = 0; j < size; j++) {
+				if (!isInt(args[i][j])) entradaInvalida();
+			}
+		}
 		if ((valor = atoi(args[i]))) {
 			pilha.push(valor);
 		} else {
