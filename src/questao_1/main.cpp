@@ -14,13 +14,13 @@ InputIterator closest2mean(InputIterator first, InputIterator last) {
 	}
 	avg /= 6;
 	InputIterator result = first;
-	int smaller = 1;
+	bool smaller = true;
 	while (smaller) {
 		if (*result < avg){
-			smaller = 1;
+			smaller = true;
 			result++;	
 		} 
-		else smaller = 0;
+		else smaller = false;
 	}
 
 	return result;
